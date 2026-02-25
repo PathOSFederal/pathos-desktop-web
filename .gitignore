@@ -39,3 +39,9 @@ public/downloads/*.exe
 public/downloads/*.msi
 public/downloads/*.dmg
 public/downloads/*.zip
+artifacts/
+artifacts/*.patch
+artifacts/*-this-run.patch
+artifacts/*-run.patch
+artifacts/*-working-tree.patch
+artifacts/*.md
