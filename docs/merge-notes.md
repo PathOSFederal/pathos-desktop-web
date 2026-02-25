@@ -815,3 +815,31 @@ Name                  Length
 day-12.patch          547103527
 day-12-this-run.patch 456451098
 ```
+
+## 2026-02-25 Integration - agent branch consolidation
+
+### Branches merged into `feature/integrate-agents-into-develop-v1`
+- `feature/transfer-a6-quality-tooling-d3-12` (merged, commit `fb49e05`)
+- `feature/transfer-a3-jobsearch-details-d3-12` (already up to date)
+- `feature/transfer-a4-resume-tailoring-d3-12` (already up to date)
+- `feature/transfer-a5-guided-apply-d3-12` (already up to date)
+- `feature/mvp-transfer-remaining-v1` (skipped: branch not found)
+
+### Conflicts
+- None
+
+### Commands run after each merge
+```text
+pnpm install
+pnpm check:boundaries
+pnpm -r typecheck
+pnpm -C apps/web test
+pnpm -C apps/desktop build
+```
+
+### Gate results
+- `pnpm install`: PASS (lockfile up to date)
+- `pnpm check:boundaries`: PASS (no forbidden `next/*` or `electron/*` imports under `packages/`)
+- `pnpm -r typecheck`: PASS
+- `pnpm -C apps/web test`: PASS (28 files, 593 tests)
+- `pnpm -C apps/desktop build`: PASS
