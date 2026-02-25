@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@pathos/ui-web": ["../../packages/ui-web/src/index.ts"],
+      "@pathos/ui-web/*": ["../../packages/ui-web/src/*"],
+      "@pathos/core": ["../../packages/core/src/index.ts"],
+      "@pathos/core/*": ["../../packages/core/src/*"],
+      "@pathos/adapters": ["../../packages/adapters/src/index.ts"],
+      "@pathos/adapters/*": ["../../packages/adapters/src/*"],
+      "@pathos/api": ["../../packages/api/src/index.ts"],
+      "@pathos/api/*": ["../../packages/api/src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}

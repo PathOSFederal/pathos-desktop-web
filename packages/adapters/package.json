@@ -1,0 +1,17 @@
+{
+  "name": "@pathos/adapters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pathos/core": "workspace:*"
+  },
+  "scripts": {
+    "lint": "echo adapters lint placeholder",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo adapters test placeholder"
+  }
+}

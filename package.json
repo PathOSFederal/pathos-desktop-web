@@ -1,0 +1,26 @@
+{
+  "name": "pathos-desktop-web",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "dev:web": "pnpm -C apps/web dev",
+    "dev:desktop": "pnpm -C apps/desktop dev",
+    "check:boundaries": "node scripts/check-boundaries.js",
+    "lint": "pnpm check:boundaries && pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm check:boundaries && pnpm -r test",
+    "docs:day-artifacts": "powershell -ExecutionPolicy Bypass -File scripts/day-artifacts.ps1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
+}

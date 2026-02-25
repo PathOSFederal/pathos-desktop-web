@@ -1,0 +1,236 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pathos-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.pathos-shell-banner {
+  padding: 0 16px;
+}
+
+.pathos-shell-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.pathos-shell-sidebar {
+  display: none;
+  border-right: 1px solid var(--border);
+}
+
+.pathos-shell-main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.pathos-shell-advisor {
+  display: none;
+  width: 320px;
+  background: var(--background);
+  border-left: 1px solid var(--border);
+}
+
+.pathos-shell-advisor.left {
+  border-left: 0;
+  border-right: 1px solid var(--border);
+}
+
+.pathos-shell-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(2, 6, 23, 0.8);
+  display: flex;
+}
+
+.pathos-shell-mobile-panel {
+  width: 280px;
+  max-width: 85vw;
+  height: 100%;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.pathos-shell-mobile-header {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pathos-shell-mobile-close {
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.pathos-shell-mobile-content {
+  flex: 1;
+  min-height: 0;
+}
+
+.pathos-shell-shortcut-hint {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--card-foreground);
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pathos-shortcuts-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.7);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pathos-shortcuts-modal {
+  width: 420px;
+  max-width: calc(100vw - 24px);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.pathos-shortcuts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pathos-shortcuts-list {
+  margin: 12px 0 0 0;
+  padding: 0 0 0 16px;
+}
+
+.pathos-rail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 1px solid var(--border);
+  background: var(--card);
+  color: var(--card-foreground);
+}
+
+.pathos-rail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pathos-rail-messages {
+  flex: 1;
+  padding: 12px;
+}
+
+.pathos-rail-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.pathos-rail-input-row input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.pathos-rail-input-row button {
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.shared-screen {
+  padding: 24px;
+}
+
+.shared-section-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.shared-section-header p {
+  margin: 6px 0 0 0;
+  color: var(--muted-foreground);
+}
+
+.shared-screen-grid {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.shared-section-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--card-foreground);
+  padding: 14px;
+}
+
+.shared-section-card h2 {
+  margin: 0 0 8px 0;
+}
+
+.shared-empty-state {
+  color: var(--muted-foreground);
+}
+
+.shared-loading-state {
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+.shared-toggle-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+@media (min-width: 1024px) {
+  .pathos-shell-sidebar {
+    display: block;
+  }
+
+  .pathos-shell-advisor {
+    display: block;
+    flex-shrink: 0;
+  }
+}

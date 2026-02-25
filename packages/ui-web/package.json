@@ -1,0 +1,33 @@
+{
+  "name": "@pathos/ui-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./SharedBanner": "./src/SharedBanner.tsx",
+    "./styles/tokens.css": "./src/styles/tokens.css",
+    "./styles/base.css": "./src/styles/base.css"
+  },
+  "dependencies": {
+    "@pathos/adapters": "workspace:*",
+    "@pathos/api": "workspace:*",
+    "@pathos/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "scripts": {
+    "lint": "echo ui-web lint placeholder",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "jsdom": "^26.1.0",
+    "vitest": "^3.2.4"
+  }
+}

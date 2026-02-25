@@ -1,0 +1,48 @@
+"use client";
+
+import type React from "react";
+import { ThemeProvider } from "@/components/theme-provider";
+import { StoreInitializer } from "@/components/store-initializer";
+import { UserPreferencesProvider } from "@/contexts/user-preferences-context";
+import { PrivacyContextProvider } from "@/contexts/privacy-context";
+import { ProfileProvider } from "@/contexts/profile-context";
+import { PersonaProvider } from "@/contexts/persona-context";
+import { JobSearchProvider } from "@/contexts/job-search-context";
+import { JobDataProvider } from "@/contexts/job-data-context";
+import { AdvisorContextProvider } from "@/contexts/advisor-context";
+import { TailoringSessionProvider } from "@/contexts/tailoring-session-context";
+import { WebAppShellAdapterProvider } from "@/components/shell/web-app-shell-adapter-provider";
+import { PreferencesProvider } from "@pathos/ui-web";
+import { createWebPreferencesAdapter } from "@/lib/adapters/preferences-adapter";
+
+const webPreferencesAdapter = createWebPreferencesAdapter();
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider>
+      <StoreInitializer>
+        <ProfileProvider>
+          <PersonaProvider>
+            <JobDataProvider>
+              <JobSearchProvider>
+                <AdvisorContextProvider>
+                  <TailoringSessionProvider>
+                    <UserPreferencesProvider>
+                      <PrivacyContextProvider>
+                        <PreferencesProvider adapter={webPreferencesAdapter}>
+                          <WebAppShellAdapterProvider>{children}</WebAppShellAdapterProvider>
+                        </PreferencesProvider>
+                      </PrivacyContextProvider>
+                    </UserPreferencesProvider>
+                  </TailoringSessionProvider>
+                </AdvisorContextProvider>
+              </JobSearchProvider>
+            </JobDataProvider>
+          </PersonaProvider>
+        </ProfileProvider>
+      </StoreInitializer>
+    </ThemeProvider>
+  );
+}
+
+export default Providers;

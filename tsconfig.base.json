@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pathos/ui-web": ["packages/ui-web/src/index.ts"],
+      "@pathos/ui-web/*": ["packages/ui-web/src/*"],
+      "@pathos/core": ["packages/core/src/index.ts"],
+      "@pathos/core/*": ["packages/core/src/*"],
+      "@pathos/adapters": ["packages/adapters/src/index.ts"],
+      "@pathos/adapters/*": ["packages/adapters/src/*"],
+      "@pathos/api": ["packages/api/src/index.ts"],
+      "@pathos/api/*": ["packages/api/src/*"]
+    }
+  }
+}
