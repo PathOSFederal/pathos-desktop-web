@@ -40,6 +40,7 @@ public/downloads/*.msi
 public/downloads/*.dmg
 public/downloads/*.zip
 artifacts/
+apps/web/artifacts/
 artifacts/*.patch
 artifacts/*-this-run.patch
 artifacts/*-run.patch
