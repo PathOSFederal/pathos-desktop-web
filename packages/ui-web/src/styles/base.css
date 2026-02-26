@@ -31,11 +31,17 @@ body {
 .pathos-shell-sidebar {
   display: none;
   border-right: 1px solid var(--border);
+  background: var(--card);
+  flex-shrink: 0;
+  width: 256px;
+  overflow-y: auto;
 }
 
 .pathos-shell-main {
   flex: 1;
   overflow-y: auto;
+  background: var(--background);
+  min-width: 0;
 }
 
 .pathos-shell-advisor {
@@ -138,62 +144,130 @@ body {
   border-left: 1px solid var(--border);
   background: var(--card);
   color: var(--card-foreground);
+  flex-shrink: 0;
+  width: 320px;
+  min-width: 280px;
 }
 
 .pathos-rail-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
+  padding: 16px;
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.pathos-rail-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--card-foreground);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .pathos-rail-messages {
   flex: 1;
-  padding: 12px;
+  padding: 16px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.pathos-rail-messages p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
 }
 
 .pathos-rail-input-row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
-  padding: 12px;
+  padding: 16px;
   border-top: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .pathos-rail-input-row input {
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 6px 10px;
+  padding: 10px 12px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 14px;
+  transition: border-color 150ms ease-out;
+}
+
+.pathos-rail-input-row input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.pathos-rail-input-row input::placeholder {
+  color: var(--muted-foreground);
 }
 
 .pathos-rail-input-row button {
-  border: 1px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-foreground);
   border-radius: 8px;
-  padding: 6px 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 150ms ease-out;
+}
+
+.pathos-rail-input-row button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.pathos-rail-input-row button:active:not(:disabled) {
+  opacity: 0.8;
+}
+
+.pathos-rail-input-row button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .shared-screen {
   padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.shared-section-header {
+  margin-bottom: 24px;
 }
 
 .shared-section-header h1 {
   margin: 0;
   font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--foreground);
 }
 
 .shared-section-header p {
   margin: 6px 0 0 0;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--muted-foreground);
 }
 
 .shared-screen-grid {
-  margin-top: 16px;
+  margin-top: 24px;
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .shared-section-card {
@@ -201,20 +275,64 @@ body {
   border-radius: 12px;
   background: var(--card);
   color: var(--card-foreground);
-  padding: 14px;
+  padding: 16px;
+  transition: border-color 150ms ease-out;
+}
+
+.shared-section-card:hover {
+  border-color: var(--accent);
 }
 
 .shared-section-card h2 {
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--card-foreground);
+}
+
+.shared-section-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
 }
 
 .shared-empty-state {
   color: var(--muted-foreground);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 16px 0;
+  margin: 0;
 }
 
 .shared-loading-state {
   color: var(--muted-foreground);
   font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 16px 0;
+  margin: 0;
+  position: relative;
+}
+
+.shared-loading-state::after {
+  content: '...';
+  animation: loading-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes loading-dots {
+  0%,
+  20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%,
+  100% {
+    content: '...';
+  }
 }
 
 .shared-toggle-row {
