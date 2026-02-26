@@ -114,7 +114,7 @@
 .desktop-shell-sidebar-title {
   font-size: 11px;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--accent-muted);
   letter-spacing: 0.1em;
   font-weight: 600;
   margin: 0 0 8px 0;

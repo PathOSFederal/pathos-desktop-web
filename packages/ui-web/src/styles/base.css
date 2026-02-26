@@ -1,22 +1,22 @@
 /* Theme Tokens */
 :root {
-  /* Background hierarchy */
-  --bg: oklch(0.05 0 0);
-  --surface: oklch(0.12 0 0);
-  --surface-2: oklch(0.18 0.01 240);
+  /* Background hierarchy - matching screenshot */
+  --bg: oklch(0.06 0.02 248); /* #101117 - very dark navy/black */
+  --surface: oklch(0.08 0.03 264); /* #16171d - slightly lighter dark gray/charcoal */
+  --surface-2: oklch(0.17 0.02 256); /* #2C2E33 - lighter dark gray for inputs/chips */
   
   /* Text colors */
-  --text: oklch(0.95 0 0);
-  --text-muted: oklch(0.65 0 0);
+  --text: oklch(0.98 0 0); /* white/very light off-white */
+  --text-muted: oklch(0.65 0 0); /* medium grey for secondary text */
   
-  /* Accent colors */
-  --accent: oklch(0.72 0.15 60);
-  --accent-muted: oklch(0.65 0.12 55);
+  /* Accent colors - matching screenshot orange */
+  --accent: oklch(0.62 0.22 41); /* #FF7A00 - vibrant orange */
+  --accent-muted: oklch(0.50 0.18 40); /* #CC6200 - darker desaturated orange */
   
   /* Borders and effects */
-  --border: oklch(0.18 0 0);
+  --border: oklch(0.20 0.01 260); /* faint light gray borders */
   --radius: 8px;
-  --shadow: 0 2px 8px oklch(0 0 0 / 0.3);
+  --shadow: 0 2px 8px oklch(0 0 0 / 0.4);
   --focus-ring: 0 0 0 2px var(--accent);
 }
 
@@ -29,7 +29,7 @@ body,
 body {
   margin: 0;
   background: var(--bg);
-  background-image: linear-gradient(to bottom, oklch(0.04 0 0), oklch(0.06 0 0));
+  background-image: radial-gradient(ellipse at center, oklch(0.07 0.02 250), var(--bg));
   color: var(--text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -39,7 +39,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background: var(--bg);
-  background-image: linear-gradient(to bottom, oklch(0.04 0 0), oklch(0.06 0 0));
+  background-image: radial-gradient(ellipse at center, oklch(0.07 0.02 250), var(--bg));
 }
 
 .pathos-shell-banner {
@@ -65,7 +65,7 @@ body {
   flex: 1;
   overflow-y: auto;
   background: var(--bg);
-  background-image: linear-gradient(to bottom, oklch(0.04 0 0), oklch(0.06 0 0));
+  background-image: radial-gradient(ellipse at center, oklch(0.07 0.02 250), var(--bg));
   min-width: 0;
 }
 
