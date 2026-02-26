@@ -1,3 +1,25 @@
+/* Theme Tokens */
+:root {
+  /* Background hierarchy */
+  --bg: oklch(0.05 0 0);
+  --surface: oklch(0.12 0 0);
+  --surface-2: oklch(0.18 0.01 240);
+  
+  /* Text colors */
+  --text: oklch(0.95 0 0);
+  --text-muted: oklch(0.65 0 0);
+  
+  /* Accent colors */
+  --accent: oklch(0.72 0.15 60);
+  --accent-muted: oklch(0.65 0.12 55);
+  
+  /* Borders and effects */
+  --border: oklch(0.18 0 0);
+  --radius: 8px;
+  --shadow: 0 2px 8px oklch(0 0 0 / 0.3);
+  --focus-ring: 0 0 0 2px var(--accent);
+}
+
 html,
 body,
 #root {
@@ -6,8 +28,9 @@ body,
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  background-image: linear-gradient(to bottom, oklch(0.04 0 0), oklch(0.06 0 0));
+  color: var(--text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -15,7 +38,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background: var(--background);
+  background: var(--bg);
+  background-image: linear-gradient(to bottom, oklch(0.04 0 0), oklch(0.06 0 0));
 }
 
 .pathos-shell-banner {
@@ -31,7 +55,7 @@ body {
 .pathos-shell-sidebar {
   display: none;
   border-right: 1px solid var(--border);
-  background: var(--card);
+  background: var(--bg);
   flex-shrink: 0;
   width: 256px;
   overflow-y: auto;
@@ -40,14 +64,15 @@ body {
 .pathos-shell-main {
   flex: 1;
   overflow-y: auto;
-  background: var(--background);
+  background: var(--bg);
+  background-image: linear-gradient(to bottom, oklch(0.04 0 0), oklch(0.06 0 0));
   min-width: 0;
 }
 
 .pathos-shell-advisor {
   display: none;
   width: 320px;
-  background: var(--background);
+  background: var(--bg);
   border-left: 1px solid var(--border);
 }
 
@@ -68,10 +93,11 @@ body {
   width: 280px;
   max-width: 85vw;
   height: 100%;
-  background: var(--card);
+  background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow);
 }
 
 .pathos-shell-mobile-header {
@@ -81,9 +107,9 @@ body {
 
 .pathos-shell-mobile-close {
   border: 1px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
-  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: var(--radius);
   padding: 6px 10px;
   cursor: pointer;
 }
@@ -99,11 +125,12 @@ body {
   bottom: 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: var(--card);
-  color: var(--card-foreground);
+  background: var(--surface);
+  color: var(--text);
   padding: 6px 12px;
   font-size: 12px;
   cursor: pointer;
+  box-shadow: var(--shadow);
 }
 
 .pathos-shortcuts-overlay {
@@ -120,10 +147,11 @@ body {
   width: 420px;
   max-width: calc(100vw - 24px);
   border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--card-foreground);
-  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius);
   padding: 16px;
+  box-shadow: var(--shadow);
 }
 
 .pathos-shortcuts-header {
@@ -142,11 +170,12 @@ body {
   flex-direction: column;
   height: 100%;
   border-left: 1px solid var(--border);
-  background: var(--card);
-  color: var(--card-foreground);
+  background: var(--surface);
+  color: var(--text);
   flex-shrink: 0;
   width: 320px;
   min-width: 280px;
+  box-shadow: var(--shadow);
 }
 
 .pathos-rail-header {
@@ -163,10 +192,41 @@ body {
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--card-foreground);
+  color: var(--text);
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.pathos-rail-header-icon {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.pathos-rail-chips {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 16px 16px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pathos-rail-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.pathos-rail-chip-icon {
+  color: var(--accent);
+  font-size: 8px;
 }
 
 .pathos-rail-messages {
@@ -176,28 +236,55 @@ body {
   min-height: 0;
 }
 
+.pathos-rail-suggested-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pathos-rail-prompt-item {
+  border: 0;
+  background: var(--surface-2);
+  color: var(--text);
+  text-align: left;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.pathos-rail-prompt-item:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
 .pathos-rail-messages p {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--muted-foreground);
+  color: var(--text-muted);
 }
 
 .pathos-rail-input-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   gap: 8px;
   padding: 16px;
   border-top: 1px solid var(--border);
   flex-shrink: 0;
+  align-items: center;
+}
+
+.pathos-rail-input-row input {
+  flex: 1;
 }
 
 .pathos-rail-input-row input {
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 10px 12px;
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--surface-2);
+  color: var(--text);
   font-size: 14px;
   transition: border-color 150ms ease-out;
 }
@@ -205,35 +292,55 @@ body {
 .pathos-rail-input-row input:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: var(--focus-ring);
 }
 
 .pathos-rail-input-row input::placeholder {
-  color: var(--muted-foreground);
+  color: var(--text-muted);
 }
 
 .pathos-rail-input-row button {
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--accent-foreground);
-  border-radius: 8px;
-  padding: 10px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  padding: 0;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: opacity 150ms ease-out;
 }
 
-.pathos-rail-input-row button:hover:not(:disabled) {
+.pathos-rail-send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 150ms ease-out;
+  flex-shrink: 0;
+}
+
+.pathos-rail-send-button:hover:not(:disabled) {
   opacity: 0.9;
 }
 
-.pathos-rail-input-row button:active:not(:disabled) {
+.pathos-rail-send-button:active:not(:disabled) {
   opacity: 0.8;
 }
 
-.pathos-rail-input-row button:disabled {
+.pathos-rail-send-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.pathos-rail-send-icon {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .shared-screen {
@@ -253,14 +360,14 @@ body {
   font-size: 28px;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--foreground);
+  color: var(--text);
 }
 
 .shared-section-header p {
   margin: 6px 0 0 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--muted-foreground);
+  color: var(--text-muted);
 }
 
 .shared-screen-grid {
@@ -272,11 +379,12 @@ body {
 
 .shared-section-card {
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
-  color: var(--card-foreground);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
   padding: 16px;
   transition: border-color 150ms ease-out;
+  box-shadow: var(--shadow);
 }
 
 .shared-section-card:hover {
@@ -288,18 +396,18 @@ body {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--card-foreground);
+  color: var(--text);
 }
 
 .shared-section-card p {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--muted-foreground);
+  color: var(--text-muted);
 }
 
 .shared-empty-state {
-  color: var(--muted-foreground);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.5;
   padding: 16px 0;
@@ -307,7 +415,7 @@ body {
 }
 
 .shared-loading-state {
-  color: var(--muted-foreground);
+  color: var(--text-muted);
   font-style: italic;
   font-size: 14px;
   line-height: 1.5;
