@@ -66,28 +66,36 @@ function DesktopSidebar(props: {
 
   return (
     <aside className="desktop-shell-sidebar">
-      <div className="desktop-shell-sidebar-title">Navigation</div>
-      {desktopNavItems.map(function (item) {
-        const isActive = isDesktopNavActive(currentPath, item.path);
-        let itemClassName = 'desktop-shell-sidebar-item';
-        if (isActive) {
-          itemClassName = itemClassName + ' active';
-        }
+      <div className="desktop-shell-sidebar-header">
+        <h2>PathOS</h2>
+        <p>Desktop</p>
+      </div>
+      <nav className="desktop-shell-sidebar-nav">
+        <div className="desktop-shell-sidebar-section">
+          <div className="desktop-shell-sidebar-title">EXPLORER</div>
+          {desktopNavItems.map(function (item) {
+            const isActive = isDesktopNavActive(currentPath, item.path);
+            let itemClassName = 'desktop-shell-sidebar-item';
+            if (isActive) {
+              itemClassName = itemClassName + ' active';
+            }
 
-        return (
-          <button
-            key={item.path}
-            type="button"
-            className={itemClassName}
-            onClick={function () {
-              onNavigateTo(item.path);
-              onNavigate();
-            }}
-          >
-            {item.label}
-          </button>
-        );
-      })}
+            return (
+              <button
+                key={item.path}
+                type="button"
+                className={itemClassName}
+                onClick={function () {
+                  onNavigateTo(item.path);
+                  onNavigate();
+                }}
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </div>
+      </nav>
     </aside>
   );
 }
