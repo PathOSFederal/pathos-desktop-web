@@ -45,3 +45,5 @@ artifacts/*-this-run.patch
 artifacts/*-run.patch
 artifacts/*-working-tree.patch
 artifacts/*.md
+
+apps/web/artifacts/
