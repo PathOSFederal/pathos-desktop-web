@@ -15,10 +15,24 @@ interface DesktopNavItem {
   path: string;
 }
 
-const desktopNavItems: DesktopNavItem[] = [
-  { label: 'Dashboard', path: '/dashboard' },
-  { label: 'Career', path: '/career' },
-  { label: 'Settings', path: '/settings' },
+interface DesktopNavSection {
+  title: string;
+  items: DesktopNavItem[];
+}
+
+const desktopNavSections: DesktopNavSection[] = [
+  {
+    title: 'OVERVIEW',
+    items: [{ label: 'Dashboard', path: '/dashboard' }],
+  },
+  {
+    title: 'CAREER & JOBS',
+    items: [{ label: 'Career', path: '/career' }],
+  },
+  {
+    title: 'SETTINGS',
+    items: [{ label: 'Settings', path: '/settings' }],
+  },
 ];
 
 function DesktopTopBar(props: { onOpenMobileNav: () => void; onGoHome: () => void; currentPath: string }) {
@@ -71,30 +85,34 @@ function DesktopSidebar(props: {
         <p>Desktop</p>
       </div>
       <nav className="desktop-shell-sidebar-nav">
-        <div className="desktop-shell-sidebar-section">
-          <div className="desktop-shell-sidebar-title">EXPLORER</div>
-          {desktopNavItems.map(function (item) {
-            const isActive = isDesktopNavActive(currentPath, item.path);
-            let itemClassName = 'desktop-shell-sidebar-item';
-            if (isActive) {
-              itemClassName = itemClassName + ' active';
-            }
+        {desktopNavSections.map(function (section) {
+          return (
+            <div key={section.title} className="desktop-shell-sidebar-section">
+              <div className="desktop-shell-sidebar-title">{section.title}</div>
+              {section.items.map(function (item) {
+                const isActive = isDesktopNavActive(currentPath, item.path);
+                let itemClassName = 'desktop-shell-sidebar-item';
+                if (isActive) {
+                  itemClassName = itemClassName + ' active';
+                }
 
-            return (
-              <button
-                key={item.path}
-                type="button"
-                className={itemClassName}
-                onClick={function () {
-                  onNavigateTo(item.path);
-                  onNavigate();
-                }}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
+                return (
+                  <button
+                    key={item.path}
+                    type="button"
+                    className={itemClassName}
+                    onClick={function () {
+                      onNavigateTo(item.path);
+                      onNavigate();
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+          );
+        })}
       </nav>
     </aside>
   );

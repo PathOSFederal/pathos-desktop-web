@@ -26,20 +26,45 @@ export function PathAdvisorRail(props: PathAdvisorRailProps) {
     }
   };
 
+  const suggestedPrompts = [
+    'What roles match my experience?',
+    'How does this job impact my retirement?',
+    'What are the PCS requirements?',
+  ];
+
   return (
     <section className="pathos-rail">
       <header className="pathos-rail-header">
-        <h2>PathAdvisor</h2>
+        <h2>
+          <span className="pathos-rail-header-icon">●</span>
+          PathAdvisor
+        </h2>
       </header>
+      <div className="pathos-rail-chips">
+        <div className="pathos-rail-chip">
+          <span className="pathos-rail-chip-icon">●</span>
+          <span>Viewing: Job Search</span>
+        </div>
+        <div className="pathos-rail-chip">
+          <span>Privacy: Visible</span>
+        </div>
+      </div>
       <div className="pathos-rail-messages">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <p>
-            PathAdvisor uses your career and resume details to give tailored advice for promotions,
-            lateral moves, and job announcements.
-          </p>
-          <p style={{ fontSize: '13px', color: 'var(--muted-foreground)' }}>
-            Local-first. Private by default.
-          </p>
+        <div className="pathos-rail-suggested-prompts">
+          {suggestedPrompts.map(function (prompt, index) {
+            return (
+              <button
+                key={index}
+                type="button"
+                className="pathos-rail-prompt-item"
+                onClick={function () {
+                  setInputValue(prompt);
+                }}
+              >
+                {prompt}
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className="pathos-rail-input-row">
@@ -49,16 +74,17 @@ export function PathAdvisorRail(props: PathAdvisorRailProps) {
             setInputValue(event.target.value);
           }}
           onKeyDown={handleKeyDown}
-          placeholder="Ask about job impact, PCS, relocation..."
+          placeholder="Ask about job impact, PCS, retirement..."
           aria-label="Ask PathAdvisor"
         />
         <button
           type="button"
+          className="pathos-rail-send-button"
           onClick={handleSend}
           disabled={!inputValue.trim()}
           aria-label="Send message"
         >
-          Send
+          <span className="pathos-rail-send-icon">→</span>
         </button>
       </div>
     </section>
